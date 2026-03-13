@@ -9,101 +9,39 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     
     <style>
-        :root {
-            --primary-color: #0d6efd;
-            --linkedin-blue: #0077b5;
-            --dark-bg: #0f172a;
-        }
-
-        body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            scroll-behavior: smooth; 
-            background-color: #f8fafc; 
-        }
-
+        :root { --primary-color: #0d6efd; --dark-bg: #0f172a; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; background-color: #f8fafc; }
+        
         /* --- Navbar --- */
-        .navbar {
-            background: rgba(255, 255, 255, 0.8) !important;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            padding: 15px 0;
-        }
-
-        .navbar-brand {
-            font-weight: 800;
-            color: var(--primary-color) !important;
-            font-size: 1.5rem;
-        }
-
-        .nav-link {
-            font-weight: 600;
-            color: #334155 !important;
-            margin: 0 10px;
-        }
-
-        .btn-nav-contact {
-            background: var(--primary-color);
-            color: white !important;
-            border-radius: 50px;
-            padding: 8px 25px !important;
-            box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
-        }
+        .navbar { background: rgba(255, 255, 255, 0.8) !important; backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 15px 0; }
+        .navbar-brand { font-weight: 800; color: var(--primary-color) !important; font-size: 1.5rem; }
+        .nav-link { font-weight: 600; color: #334155 !important; margin: 0 10px; }
 
         /* --- Hero Section --- */
-        .hero-section {
-            min-height: 85vh;
-            display: flex;
-            align-items: center;
-            background: radial-gradient(circle at top right, #e0f2fe, transparent),
-                        radial-gradient(circle at bottom left, #f1f5f9, transparent);
-            padding-top: 100px;
-        }
+        .hero-section { min-height: 80vh; display: flex; align-items: center; background: radial-gradient(circle at top right, #e0f2fe, transparent), radial-gradient(circle at bottom left, #f1f5f9, transparent); padding-top: 100px; }
+        .hero-title { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 800; color: var(--dark-bg); line-height: 1.1; }
 
-        .hero-title {
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            font-weight: 800;
-            color: var(--dark-bg);
-            line-height: 1.1;
+        /* --- Global Cards --- */
+        .project-card, .skill-card, .blog-card, .contact-card { 
+            background: white; border: none; border-radius: 20px; transition: 0.3s; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); height: 100%;
         }
-
-        /* --- Skill Cards --- */
-        .skill-card {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            border: 1px solid #e2e8f0;
-            transition: 0.3s;
-            height: 100%;
-        }
-        .skill-card:hover {
-            border-color: var(--primary-color);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        }
+        .project-card { border-left: 5px solid var(--primary-color); padding: 25px; }
+        .skill-card { padding: 20px; text-align: center; border: 1px solid #e2e8f0; }
+        .skill-card:hover { transform: translateY(-5px); border-color: var(--primary-color); }
         .skill-icon { font-size: 2.2rem; color: var(--primary-color); margin-bottom: 12px; }
 
-        /* --- Project Cards --- */
-        .project-card {
-            background: white;
-            border: none;
-            border-radius: 20px;
-            transition: 0.3s;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border-left: 5px solid var(--primary-color);
-        }
+        /* --- Blog --- */
+        .blog-card { overflow: hidden; border: 1px solid #eee; }
+        .blog-content { padding: 25px; }
+        .blog-tag { font-size: 0.7rem; font-weight: 700; color: var(--primary-color); text-transform: uppercase; }
 
-        /* --- Contact --- */
-        .contact-box {
-            background: #1e293b;
-            padding: 30px;
-            border-radius: 20px;
-            text-decoration: none;
-            display: block;
-            color: white;
-            transition: 0.3s;
-        }
-        .contact-box:hover { background: #2d3e5a; transform: translateY(-5px); }
+        /* --- Contact Form --- */
+        .contact-card { padding: 40px; border: 1px solid #e2e8f0; }
+        .form-control { border-radius: 12px; padding: 12px; border: 1px solid #dee2e6; margin-bottom: 15px; }
+        .form-control:focus { box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.15); border-color: var(--primary-color); }
+        
+        footer { background: #f1f5f9; padding: 30px 0; border-top: 1px solid #e2e8f0; }
     </style>
 </head>
 <body>
@@ -111,17 +49,14 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">PRATYUSH<span style="color:#333">.P</span></a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Experience</a></li>
                     <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-                    <li class="nav-item mt-2 mt-lg-0">
-                        <a class="nav-link btn-nav-contact ms-lg-3" href="#contact">Hire Me</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0"><a class="btn btn-primary rounded-pill px-4" href="#contact">Get In Touch</a></li>
                 </ul>
             </div>
         </div>
@@ -133,72 +68,123 @@
                 <div class="col-lg-8">
                     <h6 class="text-primary fw-bold mb-3">SOFTWARE ENGINEER @ 3 YEARS EXP</h6>
                     <h1 class="hero-title mb-4">Mastering <span id="typed" class="text-primary"></span></h1>
-                    <p class="lead text-muted mb-5 pe-lg-5">Hi, I'm Pratyush Pandey. I build high-end ERP solutions and modern web applications with expert-level precision in Frappe and Frontend technologies.</p>
-                </div>
-                <div class="col-lg-4 d-none d-lg-block text-center">
-                    <i class="fa-solid fa-laptop-code" style="font-size: 8rem; opacity: 0.1;"></i>
+                    <p class="lead text-muted mb-5">Hi, I'm Pratyush Pandey. I build robust ERPNext solutions and manage large-scale codebases using Git & SourceTree.</p>
+                    <a href="#contact" class="btn btn-primary btn-lg rounded-pill px-5 shadow">Hire Me Now</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="py-5 bg-light">
+    <section id="projects" class="py-5 bg-white">
         <div class="container">
-            <h2 class="text-center fw-bold mb-5">Key Project Experience</h2>
+            <h2 class="text-center fw-bold mb-5">Professional Experience</h2>
             <div class="row g-4">
                 <div class="col-md-6">
-                    <div class="card project-card h-100 p-4">
+                    <div class="project-card">
                         <h4 class="fw-bold mb-3"><i class="fa-solid fa-industry text-primary me-2"></i>Asset Lifecycle (VBL)</h4>
-                        <p class="text-muted small">Implemented for <strong>Varun Beverages</strong>: SAP integration, Asset Requisition workflows, Warehouse management, and BOM optimization.</p>
+                        <p class="text-muted small mb-0">Managed SAP integration and Asset workflows for Varun Beverages Ltd. Expertise in Warehouse & BOM optimization.</p>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card project-card h-100 p-4">
+                    <div class="project-card">
                         <h4 class="fw-bold mb-3"><i class="fa-solid fa-code-branch text-primary me-2"></i>Version Control</h4>
-                        <p class="text-muted small">Expertise in managing complex repositories using <strong>Git, GitHub, and SourceTree</strong> for professional branching and deployment.</p>
+                        <p class="text-muted small mb-0">Specialist in Git, GitHub, and SourceTree for professional branching and conflict management in team environments.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="py-5">
+    <section id="skills" class="py-5 bg-light">
         <div class="container">
             <h2 class="text-center fw-bold mb-5">Technical Stack</h2>
             <div class="row g-3">
-                <div class="col-6 col-md-3"><div class="skill-card"><i class="fa-brands fa-html5 skill-icon" style="color:#e34c26"></i><h5>HTML5</h5></div></div>
-                <div class="col-6 col-md-3"><div class="skill-card"><i class="fa-brands fa-css3-alt skill-icon" style="color:#264de4"></i><h5>CSS3</h5></div></div>
+                <div class="col-6 col-md-3"><div class="skill-card"><i class="fa-brands fa-html5 skill-icon" style="color:#e34c26"></i><h5>HTML5/CSS3</h5></div></div>
                 <div class="col-6 col-md-3"><div class="skill-card"><i class="fa-brands fa-bootstrap skill-icon" style="color:#7952b3"></i><h5>Bootstrap</h5></div></div>
-                <div class="col-6 col-md-3"><div class="skill-card"><i class="fa-brands fa-js skill-icon" style="color:#f7df1e"></i><h5>JavaScript</h5></div></div>
-                
                 <div class="col-6 col-md-3"><div class="skill-card"><i class="fa-brands fa-angular skill-icon" style="color:#dd0031"></i><h5>Angular/JS</h5></div></div>
-                <div class="col-6 col-md-3"><div class="skill-card"><i class="fa-brands fa-git-alt skill-icon" style="color:#f05032"></i><h5>Git</h5></div></div>
-                <div class="col-6 col-md-3"><div class="skill-card"><i class="fa-brands fa-github skill-icon" style="color:#333"></i><h5>GitHub</h5></div></div>
-                <div class="col-6 col-md-3"><div class="skill-card"><i class="fa-solid fa-tree skill-icon" style="color:#2684FF"></i><h5>SourceTree</h5></div></div>
-                
-                <div class="col-12"><div class="skill-card border-primary text-primary py-4"><h3>Frappe Framework & ERPNext Specialist (3+ Years)</h3></div></div>
+                <div class="col-6 col-md-3"><div class="skill-card"><i class="fa-brands fa-git-alt skill-icon" style="color:#f05032"></i><h5>Git/GitHub</h5></div></div>
+                <div class="col-12"><div class="skill-card border-primary py-4"><h3 class="text-primary mb-0">Frappe Framework & ERPNext Specialist</h3></div></div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="bg-dark text-white py-5">
-        <div class="container text-center">
-            <h2 class="fw-bold mb-5">Connect With Me</h2>
+    <section id="blog" class="py-5 bg-white">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5">Tech Insights (Blog)</h2>
             <div class="row g-4">
-                <div class="col-md-4"><a href="mailto:pandeypratyush9919@gmail.com" class="contact-box"><i class="fa-solid fa-envelope mb-3 text-primary fs-2"></i><p>pandeypratyush9919@gmail.com</p></a></div>
-                <div class="col-md-4"><a href="https://www.linkedin.com/in/pratyush-pandey-web-developer" target="_blank" class="contact-box"><i class="fa-brands fa-linkedin mb-3 text-primary fs-2"></i><p>LinkedIn Profile</p></a></div>
-                <div class="col-md-4"><div class="contact-box"><i class="fa-solid fa-phone mb-3 text-primary fs-2"></i><p>+91 9919110625</p></div></div>
+                <div class="col-md-4">
+                    <div class="blog-card">
+                        <div class="blog-content">
+                            <span class="blog-tag">ERPNext</span>
+                            <h5 class="fw-bold mt-2">Asset Scaling in Frappe</h5>
+                            <p class="text-muted small">Insights into managing 100k+ assets with SAP integration and real-time tracking.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="blog-card">
+                        <div class="blog-content">
+                            <span class="blog-tag">Frontend</span>
+                            <h5 class="fw-bold mt-2">Angular vs Vanilla JS</h5>
+                            <p class="text-muted small">Choosing the right stack for high-performance ERP dashboards and custom UI.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="blog-card">
+                        <div class="blog-content">
+                            <span class="blog-tag">DevOps</span>
+                            <h5 class="fw-bold mt-2">Visual Git with SourceTree</h5>
+                            <p class="text-muted small">Why visual branching tools are a lifesaver for complex Frappe custom app developments.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-4 text-center text-muted"><small>&copy; 2026 Pratyush Pandey | ERPNext Specialist</small></footer>
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="contact-card shadow-lg">
+                        <h2 class="fw-bold text-center mb-4">Get In Touch</h2>
+                        <form action="https://formspree.io/f/xojklvlg" method="POST">
+                            <div class="mb-3">
+                                <label class="form-label fw-bold small">YOUR NAME</label>
+                                <input type="text" name="name" class="form-control shadow-sm" placeholder="Enter your name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold small">YOUR EMAIL</label>
+                                <input type="email" name="email" class="form-control shadow-sm" placeholder="name@email.com" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold small">MESSAGE</label>
+                                <textarea name="message" class="form-control shadow-sm" rows="4" placeholder="How can I help you?" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 py-3 fw-bold rounded-pill">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center">
+        <div class="container text-center">
+            <div class="mb-3">
+                <a href="https://www.linkedin.com/in/pratyush-pandey-web-developer" class="text-primary me-3 fs-4"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="mailto:pandeypratyush9919@gmail.com" class="text-primary fs-4"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+            <p class="text-muted small mb-0">&copy; 2026 Pratyush Pandey | Built with Frappe & Angular Expertise</p>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <script>
         var typed = new Typed('#typed', {
-            strings: ['Frappe Framework.', 'Angular Development.', 'ERPNext Solutions.', 'Git & GitHub.'],
+            strings: ['Frappe Framework.', 'ERPNext Solutions.', 'Angular Apps.', 'Git & SourceTree.'],
             typeSpeed: 60, backSpeed: 40, loop: true
         });
     </script>
